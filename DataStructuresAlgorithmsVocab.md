@@ -35,7 +35,7 @@
 -   traversing
     -   Access each data item once
 -   searching
--   Find the location of one or more data items matching a constraint
+    -   Find the location of one or more data items matching a constraint
 -   inserting / deleting
     -   Inserting = adding a new data item
     -   Deleting = removing an existing data item
