@@ -1,0 +1,45 @@
+-   primitive vs. non-primitive data structures
+    -   primitive = fundamental data types, built into the language - e.g. int
+    -   non-primitive = created using primitive data structures. e.g. linked list, stack
+-   linear vs. non-linear data structures
+    -   linear = elements arranged in a sequential order - e.g. array, linked list
+        -   Sequential memory locations or links
+    -   non-linear = elements arranged in a non-sequential order. no adjacency. E.g. tree, graph
+-   array
+    -   Collection of items of the same type.
+    -   Fixed size, 0-indexed
+    -   Stored in contiguous memory
+    -   Insertion/Deletion is slow
+-   linked lists
+    -   Collection of nodes to form a sequential list. Each node has a value and a pointer to the next node.
+    -   No need to worry about size
+-   stacks
+    -   Linear data structure with LIFO
+    -   Push, pop, peep (I've typically seen this called `peek`) are operations
+    -   `top` variable points to the top of the stack
+-   queues
+    -   Linear data structure with FIFO
+    -   Have to store `front` and `rear` pointers
+-   trees
+    -   Non-linear data structure - nodes in a hierarchy
+    -   One root node. Each node has 0 or more children.
+    -   Simplest is binary tree, where each node has at most 2 children (left and right).
+    -   Provides quick search, insertion, deletion
+    -   Complex deletion algorithm
+-   graphs
+    -   Non-linear data structure
+    -   Collection of vertices and edges that connect the vertices
+    -   Generalized version of a tree w/o parent relationship
+    -   E.g. node = city, roads = edges
+    -   No root node
+-   traversing
+    -   Access each data item once
+-   searching
+-   Find the location of one or more data items matching a constraint
+-   inserting / deleting
+    -   Inserting = adding a new data item
+    -   Deleting = removing an existing data item
+-   sorting
+    -   rearranging data items into a particular order
+-   merging
+    -   combining two sorted data items into a single list of data items
