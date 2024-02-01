@@ -1,3 +1,5 @@
+Link to presentation: https://docs.google.com/presentation/d/1jEO8DODO74ONHM8gAPxgb03_z1jMps2lmKXgSMacBNQ/edit?usp=sharing
+
 -   primitive vs. non-primitive data structures
     -   primitive = fundamental data types, built into the language - e.g. int
     -   non-primitive = created using primitive data structures. e.g. linked list, stack
