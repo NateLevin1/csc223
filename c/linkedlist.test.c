@@ -29,17 +29,6 @@ int main() {
         ASSERT_EQ(mylist->next, NULL);
     }
 
-    // TEST("Can output list length") {
-    //     Node* mylist = NULL;
-    //     Node* n = make_node(1);
-    //     insert_in_front(&mylist, &n);
-    //     ASSERT_EQ(list_length(mylist), 1);
-
-    //     Node* n2 = make_node(2);
-    //     insert_in_front(&mylist, &n2);
-    //     ASSERT_EQ(list_length(mylist), 2);
-    // }
-
     TEST("Can print list") {
         Node* mylist = NULL;
         RETURNS_STR(print_list, "", (mylist));
@@ -61,6 +50,18 @@ int main() {
         Node* n5 = make_node(1024);
         insert_in_front(&mylist, &n5);
         RETURNS_STR(print_list, "1024 -> 4 -> 3 -> 2 -> 1", (mylist));
+    }
+
+    TEST("Can output list length") {
+        Node* mylist = NULL;
+        ASSERT_EQ(list_length(mylist), 0);
+        Node* n = make_node(1);
+        insert_in_front(&mylist, &n);
+        ASSERT_EQ(list_length(mylist), 1);
+
+        Node* n2 = make_node(2);
+        insert_in_front(&mylist, &n2);
+        ASSERT_EQ(list_length(mylist), 2);
     }
 
     END_TESTING();

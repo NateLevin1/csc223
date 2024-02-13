@@ -19,7 +19,15 @@ void insert_in_front(Node** list, Node** newnode) {
     *list = *newnode;
 }
 
-
+int list_length(Node* head) {
+    int count = 0;
+    Node* ptr = head;
+    while (ptr != NULL) {
+        count = count + 1;
+        ptr = ptr->next;
+    }
+    return count;
+}
 
 char* print_list(Node* head) {
     char* result = malloc(1024);
