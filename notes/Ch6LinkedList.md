@@ -38,3 +38,18 @@ struct node {
     -   Could underflow if start == null
     -   To delete the first node, set start to the next node and free the first node
     -   To delete last node, just set 2nd to last item's `next` to null and free the last item
+
+## Circular Linked Lists
+
+-   No inherent beginning or end
+-   Last node points to the first node
+-   Big downside is complexity of traversal
+-   Used by operating systems for task management
+-   Traversal algorithm:
+
+    1. Set current to start
+    2. While current != start, do something with current, then set current to current->next
+
+-   Insertion = If in beginning, set new node's next to start, set start to new node, and set the last node's next to the new node. If at end, set new node's next to start and set the (previously) last node's next to new node.
+
+-   Deletion = If in beginning, set next of last node to next of start, then free start, and set start to next of start. If at end, set next of second to last node to start, then free last node.
