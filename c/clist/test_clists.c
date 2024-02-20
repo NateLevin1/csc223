@@ -30,5 +30,36 @@ int main() {
         RETURNS_STR(print_list, "1 -> 2 -> 1024", (mylist));
     }
 
+    TEST("Can insert node in order in descending list") {
+        // Confirm works with empty list
+        Node* mylist = NULL;
+        Node* n = make_node(4);
+        insert_in_order(&mylist, &n);
+        RETURNS_STR(print_list, "4", (mylist));
+        Node* n2 = make_node(3);
+        insert_in_order(&mylist, &n2);
+        RETURNS_STR(print_list, "4 -> 3", (mylist));
+        for (int i = 6; i < 10; i += 2) {
+            Node* n = make_node(i);
+            n->next = mylist;
+            mylist = n;
+        }
+        n2->next = mylist;
+        // Confirm list is starts as desired
+        RETURNS_STR(print_list, "8 -> 6 -> 4 -> 3", (mylist));
+        n = make_node(5);
+        insert_in_order(&mylist, &n);
+        // Confirm new node inserted in order 
+        RETURNS_STR(print_list, "8 -> 6 -> 5 -> 4 -> 3", (mylist));
+        // Confirm insert smallest at end works 
+        n = make_node(2);
+        insert_in_order(&mylist, &n);
+        RETURNS_STR(print_list, "8 -> 6 -> 5 -> 4 -> 3 -> 2", (mylist));
+        // Confirm insert largest at beginning works 
+        n = make_node(10);
+        insert_in_order(&mylist, &n);
+        RETURNS_STR(print_list, "10 -> 8 -> 6 -> 5 -> 4 -> 3 -> 2", (mylist));
+    }
+
     END_TESTING();
 }
