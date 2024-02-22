@@ -12,53 +12,43 @@ int main() {
     }
 
     TEST("Can print list") {
-        Node* mylist = NULL;
-        RETURNS_STR(print_list, "", (mylist));
+        Node* myclist = NULL;
+        RETURNS_STR(print_clist, "", (myclist));
 
-        mylist = make_node(1);
-        mylist->next = mylist;
-        RETURNS_STR(print_list, "1", (mylist));
+        myclist = make_node(1);
+        myclist->next = myclist;
+        RETURNS_STR(print_clist, "1", (myclist));
 
         Node* two = make_node(2);
-        two->next = mylist;
-        mylist->next = two;
+        two->next = myclist;
+        myclist->next = two;
 
         Node* n = make_node(1024);
-        n->next = mylist;
+        n->next = myclist;
         two->next = n;
 
-        RETURNS_STR(print_list, "1 -> 2 -> 1024", (mylist));
+        RETURNS_STR(print_clist, "1 -> 2 -> 1024", (myclist));
     }
 
     TEST("Can insert node in order in descending list") {
         // Confirm works with empty list
-        Node* mylist = NULL;
+        Node* myclist = NULL;
+
         Node* n = make_node(4);
-        insert_in_order(&mylist, &n);
-        RETURNS_STR(print_list, "4", (mylist));
-        Node* n2 = make_node(3);
-        insert_in_order(&mylist, &n2);
-        RETURNS_STR(print_list, "4 -> 3", (mylist));
-        for (int i = 6; i < 10; i += 2) {
-            Node* n = make_node(i);
-            n->next = mylist;
-            mylist = n;
-        }
-        n2->next = mylist;
-        // Confirm list is starts as desired
-        RETURNS_STR(print_list, "8 -> 6 -> 4 -> 3", (mylist));
-        n = make_node(5);
-        insert_in_order(&mylist, &n);
-        // Confirm new node inserted in order 
-        RETURNS_STR(print_list, "8 -> 6 -> 5 -> 4 -> 3", (mylist));
-        // Confirm insert smallest at end works 
+        clist_insert_in_order(&myclist, &n);
+        RETURNS_STR(print_clist, "4", (myclist));
+
         n = make_node(2);
-        insert_in_order(&mylist, &n);
-        RETURNS_STR(print_list, "8 -> 6 -> 5 -> 4 -> 3 -> 2", (mylist));
-        // Confirm insert largest at beginning works 
-        n = make_node(10);
-        insert_in_order(&mylist, &n);
-        RETURNS_STR(print_list, "10 -> 8 -> 6 -> 5 -> 4 -> 3 -> 2", (mylist));
+        clist_insert_in_order(&myclist, &n);
+        RETURNS_STR(print_clist, "2 -> 4", (myclist));
+
+        n = make_node(3);
+        clist_insert_in_order(&myclist, &n);
+        RETURNS_STR(print_clist, "2 -> 3 -> 4", (myclist));
+
+        n = make_node(5);
+        clist_insert_in_order(&myclist, &n);
+        RETURNS_STR(print_clist, "2 -> 3 -> 4 -> 5", (myclist));
     }
 
     END_TESTING();

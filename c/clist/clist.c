@@ -14,7 +14,7 @@ Node* make_node(int data) {
     return new;
 }
 
-char* print_list(Node* head) {
+char* print_clist(Node* head) {
     char* result = malloc(1024);
 
     int index = 0;
@@ -42,7 +42,7 @@ char* print_list(Node* head) {
     return result;
 }
 
-void insert_in_order(Node** list, Node** newnode) {
+void clist_insert_in_order(Node** list, Node** newnode) {
     // empty list
     if (*list == NULL) {
         (*newnode)->next = *newnode;
@@ -51,7 +51,7 @@ void insert_in_order(Node** list, Node** newnode) {
     }
 
     // beginning insertion
-    if ((*list)->val < (*newnode)->val) {
+    if ((*list)->val > (*newnode)->val) {
         (*newnode)->next = *list;
         Node* last = *list;
         while (last->next != *list) {
@@ -66,7 +66,7 @@ void insert_in_order(Node** list, Node** newnode) {
     Node* cur = (*list)->next;
     Node* prev = *list;
 
-    while (cur != *list && cur->val > (*newnode)->val) {
+    while (cur != *list && cur->val < (*newnode)->val) {
         prev = cur;
         cur = cur->next;
     }

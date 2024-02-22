@@ -5,8 +5,8 @@ typedef struct node {
 
 Node* make_node(int);
 // int list_length(Node*);
-char* print_list(Node*);
+char* print_clist(Node*);
 // Node* find_in_list(Node*, int);
 // Node* insert_at_index(Node*, int);
-void insert_in_order(Node**, Node**);
+void clist_insert_in_order(Node**, Node**);
 // Node* remove_from_list(Node**, int);
