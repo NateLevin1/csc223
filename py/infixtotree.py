@@ -69,10 +69,10 @@ def parse_expression(tokens):
 
 def infix_to_tree(str):
     lexed = lex(str)
-    print(parse_expression(lexed))
+    return parse_expression(lexed)
 
 if __name__ == '__main__':
-    infix_to_tree(input("Enter the infix expression: "))
+    print(infix_to_tree(input("Enter the infix expression: ")))
 
 # Grammar
 # expression := number {op expression} | open_paren expression close_paren {op expression}
