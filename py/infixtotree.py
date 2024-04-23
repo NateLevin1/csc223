@@ -96,20 +96,16 @@ def evaluate_expression_tree(root):
     else:
         raise ValueError("Invalid operator")
     
-def to_reverse_polish_notation(root):
-    # base cases
-    if root == None:
-        return ""
-    if not root.left and not root.right:
-        return str(root.value)
-    left = to_reverse_polish_notation(root.left)
-    right = to_reverse_polish_notation(root.right)
-    return f"{left} {right} {root.value}"
-
+def to_rpn(tree):
+    if tree.left is not None and tree.right is not None: # if is not leaf...
+        return f"{to_rpn(tree.left)} {to_rpn(tree.right)} {tree.value}"
+    else:
+        return tree.value
+    
 if __name__ == '__main__':
     tree = infix_to_tree(input("Enter the infix expression: "))
     print(tree)
-    print("As RPN: "+to_reverse_polish_notation(tree))
+    print("As RPN: "+to_rpn(tree))
     print("Evaluation: "+str(evaluate_expression_tree(tree))+"\n")
 
 # Grammar
