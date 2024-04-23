@@ -71,8 +71,46 @@ def infix_to_tree(str):
     lexed = lex(str)
     return parse_expression(lexed)
 
+def evaluate_expression_tree(root):
+    # If the root is None, return 0
+    if not root:
+        return 0
+    
+    # If the root is a leaf node (operand), return its value
+    if not root.left and not root.right:
+        return int(root.value)
+    
+    # Recursively evaluate left and right subtrees
+    left_value = evaluate_expression_tree(root.left)
+    right_value = evaluate_expression_tree(root.right)
+    
+    # Perform operation based on the value of the root node
+    if root.value == '+':
+        return left_value + right_value
+    elif root.value == '-':
+        return left_value - right_value
+    elif root.value == '*':
+        return left_value * right_value
+    elif root.value == '/':
+        return left_value / right_value
+    else:
+        raise ValueError("Invalid operator")
+    
+def to_reverse_polish_notation(root):
+    # base cases
+    if root == None:
+        return ""
+    if not root.left and not root.right:
+        return str(root.value)
+    left = to_reverse_polish_notation(root.left)
+    right = to_reverse_polish_notation(root.right)
+    return f"{left} {right} {root.value}"
+
 if __name__ == '__main__':
-    print(infix_to_tree(input("Enter the infix expression: ")))
+    tree = infix_to_tree(input("Enter the infix expression: "))
+    print(tree)
+    print("As RPN: "+to_reverse_polish_notation(tree))
+    print("Evaluation: "+str(evaluate_expression_tree(tree))+"\n")
 
 # Grammar
 # expression := number {op expression} | open_paren expression close_paren {op expression}
