@@ -4,6 +4,9 @@ import sys
 def isnumber(c):
     return c >= '0' and c <= '9'
 
+def iswhitespace(c):
+    return c == ' ' or c == '\t' or c == '\n'
+
 class Token:
     def __init__(self, type, value):
         self.type = type
@@ -36,6 +39,8 @@ def lex(str):
             tokens.append(Token("open_paren", None))
         elif char == ')':
             tokens.append(Token("close_paren", None))
+        elif iswhitespace(char):
+            pass
         else:
             print("Syntax error")
             sys.exit(1)
