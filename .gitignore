@@ -1,4 +1,5 @@
 .DS_Store
 *.out
 .vscode
-*.bin
+alice-decoded.txt
+alice-encoded.bin

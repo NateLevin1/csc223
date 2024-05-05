@@ -103,8 +103,33 @@ int main() {
 
     // * Decode
     char* file_to_decode = read_file("alice-encoded.bin", &length);
-    char* decode_buf = malloc(length * 8);
+    char* decode_buf = malloc(length);
 
+    int current_decode_index = 0;
+    TreeNode* current_node = tree;
+    for (int i = 0; i < length; i++) {
+        for (int j = 0; j < 8; j++) {
+            // for each bit j of each byte i
+            int bit = (file_to_decode[i] >> (7 - j)) & 1;
+            if (bit == 0) {
+                current_node = current_node->left;
+            } else {
+                current_node = current_node->right;
+            }
+
+            if (current_node->left == NULL && current_node->right == NULL) {
+                decode_buf[current_decode_index] = current_node->data;
+                current_node = tree;
+                current_decode_index++;
+            }
+        }
+    }
+
+    // write decoded data to file
+    FILE* decoded_file;
+    decoded_file = fopen("alice-decoded.txt", "w");
+    fwrite(decode_buf, 1, current_decode_index - 1, decoded_file);
+    fclose(decoded_file);
 }
 
 void symbol_to_code_recursive(TreeNode* node, EncodingInfo* code[], short so_far, char length) {
